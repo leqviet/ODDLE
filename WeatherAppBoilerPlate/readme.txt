@@ -15,3 +15,8 @@ Go to location "/WeatherAppBoilerPlate" to run command:
 	2/ Do maven " mvn spring-boot:run"
 	
 Open a browser to http://localhost:<port number>/list
+
+**** Deploy on Tomcat
+	1/ Do maven "mvn clean install".
+	2/ Deploy on Tomcat
+Open a browser to http://localhost:<port number>/WeatherAppBoilerPlate/list
