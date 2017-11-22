@@ -32,7 +32,7 @@ public class ApiController {
 	private CityService cityService;
 	
     /**
-     * This api is used to load current weathers of city by name.
+     * This api is used to load current weathers of city by name and store into database.
      * 
      * @param name The name of city.
      * @return Boolean.
