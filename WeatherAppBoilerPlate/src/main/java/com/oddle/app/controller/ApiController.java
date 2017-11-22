@@ -31,9 +31,14 @@ public class ApiController {
 	@Autowired
 	private CityService cityService;
 	
-	
+    /**
+     * This api is used to load current weathers of city by name.
+     * 
+     * @param name The name of city.
+     * @return Boolean.
+     */
 	@RequestMapping(value = "/weather/current")
-    public Boolean getCurrentWeatherForCity(@RequestParam(value="n")String cityName){
+    public Boolean getCurrentWeatherAndStoreDatabase(@RequestParam(value="n")String cityName){
 		if(!StringUtils.isEmpty(cityName)){
 			Boolean value = weatherService.getCurrentWeatherByCityAndStoreIntoDatabase(cityName.trim());
 			return value;
@@ -41,6 +46,12 @@ public class ApiController {
         return false;
     }
 	
+    /**
+     * This api is used to add new city.
+     * 
+     * @param name The name of city.
+     * @return Boolean.
+     */	
 	@RequestMapping("/city/add")
 	private Boolean addCity(CityModel model){
 		if(model!=null && !StringUtils.isEmpty(model.getCityName())){
@@ -53,12 +64,23 @@ public class ApiController {
 		return false;
 	}
 	
+    /**
+     * This api is used to load all city.
+     * 
+     * @return List city.
+     */
 	@RequestMapping(value = "/cities/")
 	@ResponseBody
     public List<CityModel> loadAllCities(){
 		return CityConverter.convertEntitiesToModel(cityService.loadAll());
     }
 	
+    /**
+     * This api is used to delete city.
+     * 
+     * @param uid The uid of city.
+     * @return Boolean.
+     */
 	@RequestMapping("/city/delete")
 	public Boolean deleteCity(@RequestParam("uid") String uid){
 		City city = cityService.loadOne(uid);
@@ -69,6 +91,12 @@ public class ApiController {
 		return false;
 	}	
 	
+    /**
+     * This api is used to delete weather.
+     * 
+     * @param uid The uid of weather.
+     * @return Boolean.
+     */
 	@RequestMapping("/weather/delete")
 	public Boolean deleteWeather(@RequestParam("uid") String uid){
 		Weather weather = weatherService.loadOne(uid);

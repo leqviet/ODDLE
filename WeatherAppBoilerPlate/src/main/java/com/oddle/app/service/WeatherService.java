@@ -52,6 +52,12 @@ public class WeatherService{
     	return loadAllWeathersByCityName(null);
     }
     
+    /**
+     * This method is used to load weathers of city by name.
+     * 
+     * @param name The name of city.
+     * @return List weather report.
+     */
     public List<WeatherReport> loadAllWeathersByCityName(String name){
     	List<WeatherReport> weatherReports = new ArrayList<WeatherReport>();
     	List<City> cities = null;
@@ -74,6 +80,13 @@ public class WeatherService{
     	return weatherReports;
     }
     
+    /**
+     * This method is used OpenWeatherMap API to get the information of current weather and
+     *  save into database.
+     * 
+     * @param name The name of city.
+     * @return Boolean 
+     */
     public Boolean getCurrentWeatherByCityAndStoreIntoDatabase(String name) {
         CurrentWeather cwm;
         owm = new OpenWeatherMap(openWeatherMapApiKey);        

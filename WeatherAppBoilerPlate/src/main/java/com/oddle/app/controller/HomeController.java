@@ -19,18 +19,27 @@ public class HomeController {
 	@Autowired
 	private WeatherService weatherService;
 
+    /**
+     * Load home page.
+     */
 	@RequestMapping("/")
 	public ModelAndView home(ModelAndView mv) {
 		mv.setViewName("index");
 		return mv;
 	}
 
+    /**
+     * Load list page.
+     */
 	@RequestMapping("/list")
 	public ModelAndView list(ModelAndView mv) {
 		mv.setViewName("index");
 		return mv;
 	}
 
+    /**
+     * Load city page.
+     */
 	@RequestMapping(value = "/city", method = RequestMethod.GET)
 	public ModelAndView myPage(ModelAndView mv) {
 		mv.setViewName("city");
