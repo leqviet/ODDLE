@@ -3,6 +3,7 @@ package com.oddle.app.entity;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -26,7 +27,7 @@ public class City implements BaseEntity {
 		weathers = new HashSet<Weather>(0);
 	}
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "city")
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "city",cascade = CascadeType.ALL)
 	public Set<Weather> getWeathers() {
 		return weathers;
 	}
