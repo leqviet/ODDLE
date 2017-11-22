@@ -1,5 +1,5 @@
 <@layout.default>
-<form id="search-form" action="/api/weather/search" method="GET"> 
+<form id="search-form" action="${app.baseUrl()}/api/weather/search" method="GET"> 
   <div class="row">
   	<div class="col-xs-6 col-md-3">
   	</div>
@@ -23,7 +23,7 @@
 	  	</div>
 	  	<div class="col-xs-6 col-md-6">
 	  		<p id="message" style="color: red; display: none;"></p>
-		  	<div id="song-search-results"></div>
+		  	<div id="search-results"></div>
 		</div>  	
 	  </div>
   </div>	
@@ -31,19 +31,17 @@
 	$(document).ready(function() {
 	
 		$("#message").hide();
-		$("#song-search-results").load('/weather/list');
+		$("#search-results").load('${app.baseUrl()}/weather/list');
 		
 		$("#search-form").submit(function() {
 		$("#message").hide();
 			var searchText = $("#txtSearch").val();
-			var url = "/api/weather/current?n="+searchText;
+			var url = "${app.baseUrl()}/api/weather/current?n="+searchText;
 			$.ajax({
 				type : "GET",
 				url : url,
 				success : function(results) {	
-					console.log("results"+results);
-					console.log("searchText"+searchText);
-					$("#song-search-results").load("/weather/list",{ n: searchText });
+					$("#search-results").load("${app.baseUrl()}/weather/list",{ n: searchText });
 				}
 			});
 			return false;

@@ -90,7 +90,7 @@
 		if(confirm("Do you want to delete?")){
 			$.ajax({
 				type: "GET",
-				url: "/api/weather/delete?uid="+uid,
+				url: "${app.baseUrl()}/api/weather/delete?uid="+uid,
 				success: function(data) {
 					location.reload();
 				}

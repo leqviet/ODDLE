@@ -6,7 +6,7 @@
 	<groupId>com.oddle</groupId>
 	<artifactId>WeatherAppBoilerPlate</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>jar</packaging>
+	<packaging>war</packaging>
 
 	<name>WeatherAppBoilerPlate</name>
 	<description>Demo project for Spring Boot</description>
@@ -22,6 +22,7 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<java.version>1.8</java.version>
+		<start-class>com.oddle.app</start-class>
 	</properties>
 
 	<dependencies>
@@ -54,6 +55,12 @@
 			<artifactId>owm-japis</artifactId>
 			<version>2.5.0.3</version>
 		</dependency>
+		
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-tomcat</artifactId>
+			<scope>provided</scope>
+		</dependency>		
 	</dependencies>
 
 	<build>

@@ -15,7 +15,7 @@
           <h4 class="modal-title">Add City</h4>
         </div>
         <div class="modal-body">
-        	<form id="city_form" name="cityForm" class="choose-amount" action="/api/donate/create" method="post">
+        	<form id="city_form" name="cityForm" class="choose-amount" action="${app.baseUrl()}/api/donate/create" method="post">
           		<div class="form-group">
 		            <label for="name" class="form-control-label">Name of City</label>
 		            <input type="text" name="cityName" class="form-control" id="city-name" data-validation="required">
@@ -32,7 +32,7 @@
 <br/>
 <br/>
 <table data-toggle="table" id="data-table"
-       data-url="/api/cities/">
+       data-url="${app.baseUrl()}/api/cities/">
     <thead>
     <tr>
         <th data-field="cityName">Name</th>
@@ -41,14 +41,13 @@
     </thead>
 </table> 
 
-<script src="${app.baseUrl()}/js/jquery.form-validator.min.js"></script>
 <script type="text/javascript">
 
 $(document).ready(function() {	
 
 		$("#city_form").submit(function() {
 			var $form = $("#city_form");
-			var url = "/api/city/add";
+			var url = "${app.baseUrl()}/api/city/add";
 			var  data = $form.serialize();
 			$.ajax({
 				type : "POST",
@@ -79,7 +78,7 @@ $(document).ready(function() {
 	      if(confirm("Do you want to delete?")){
 			$.ajax({
 				type: "GET",
-				url: "/api/city/delete?uid="+row.uid,
+				url: "${app.baseUrl()}/api/city/delete?uid="+row.uid,
 				success: function(data) {
 					if(data == true){					
 						$("#data-table").bootstrapTable('refresh');
